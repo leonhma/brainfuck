@@ -30,10 +30,22 @@ cells = ilist(dft=0)
 i = 0
 
 
-def parse_chars(str):
+def scanfor(string, check, closing, frm):
+    nestedlevel = 0
+    for end, char in enumerate(string[frm:]):
+        if char == check:
+            nestedlevel += 1
+        elif char == closing and nestedlevel == 0:
+            break
+        elif char == closing:
+            nestedlevel -= 1
+    return string[frm:frm+end]
+
+
+def parse_chars(string):
     global cells, i
     progress = 0
-    for str_i, char in enumerate(str):
+    for str_i, char in enumerate(string):
         if progress > str_i:
             continue
         if char == '+':
@@ -56,11 +68,15 @@ def parse_chars(str):
         elif char == '.':
             print(chr(cells[i]), end='')
         elif char == '[':
-            loop = str[str_i+1:str.index(']', str_i+1)]
-            parse_chars(loop)
+            loop = scanfor(string, '[', ']', str_i+1)
             while(cells[i] != 0):
                 parse_chars(loop)
-            progress += len(loop)
+            progress += len(loop)+1
+        elif char == ']':
+            loop = scanfor(string, ']', '[', str_i+1)
+            while(cells[i] != 0):
+                parse_chars(loop)
+            progress += len(loop)+1
         progress += 1
 
 
