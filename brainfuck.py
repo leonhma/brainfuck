@@ -1,7 +1,7 @@
 from sys import argv
 
 
-cells = [0] * 100
+cells = [0] * 999
 i = 0
 
 
