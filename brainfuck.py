@@ -28,6 +28,7 @@ class ilist(list):
 
 cells = ilist(dft=0)
 i = 0
+inputqueue = ''
 
 
 def scanfor(string, check, closing, frm):
@@ -43,7 +44,7 @@ def scanfor(string, check, closing, frm):
 
 
 def parse_chars(string):
-    global cells, i
+    global cells, i, inputqueue
     progress = 0
     for str_i, char in enumerate(string):
         if progress > str_i:
@@ -62,9 +63,13 @@ def parse_chars(string):
         elif char == '>':
             i += 1
         elif char == ',':
-            inpt = input('user input: ')
-            inpt = inpt if inpt != '' else '_'
-            cells[i] = ord(inpt[:1])
+            if(len(inputqueue) == 0):
+                inpt = ''
+                while(inpt == ''):
+                    inpt = input('user input: ')
+                inputqueue += inpt
+            inputqueue, inpt2 = inputqueue[1:], inputqueue[0]
+            cells[i] = ord(inpt2)
         elif char == '.':
             print(chr(cells[i]), end='')
         elif char == '[':
