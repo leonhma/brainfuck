@@ -1,6 +1,6 @@
 ## "brainfuck"
 
-This is a interpreter for the complicated language that is "[brainfuck](https://youtu.be/tcHaMWktCYE)". To use it, download the repo and run `python brainfuck.py text.txt`. Supply the file your program is in as the 2nd argument. It can be in any arbitrary fileformat, as long as it's encoded as `text/*`. Have fun and build something useful! Here's another video to get you started: [link](https://youtu.be/dQw4w9WgXcQ).
+This is a interpreter for the complicated language that is ["brainfuck"](https://youtu.be/hdHjjBS4cs8). To use it, download the repo and run `python brainfuck.py text.txt`. Supply the file your program is in as the 2nd argument. It can be in any arbitrary fileformat, as long as it's encoded as `text/*`. Have fun and build something useful! Here's another video to get you started: [link](https://youtu.be/dQw4w9WgXcQ).
 
 ## Additional twists
 
